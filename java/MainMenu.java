@@ -1,19 +1,9 @@
 package com.group1.groupproject;
-
-import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
+public class MainMenu extends Pane{
 
-public class GhostHunter extends Application{
-
-	public static void main(String[] args) {
-		launch(args);
-	}
-
-	@Override
-	public void start(Stage stage) throws Exception {
+	public MainMenu() {
 		Pane pane = new Pane();
 		pane.setPrefSize(800, 600);
 		
@@ -40,11 +30,6 @@ public class GhostHunter extends Application{
 		// Image iconImage = new Image("");
 		//İcon unutma!!! stage.getIcons().add(iconImage);
 		
-		Scene homeScene = new Scene(pane);
-		stage.setScene(homeScene);
-		stage.setTitle("GHOST HUNTER");
-		stage.show();
-		
+		this.getChildren().add(pane);
 	}
-
 }
