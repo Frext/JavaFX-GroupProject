@@ -4,7 +4,6 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
-import javafx.scene.transform.Rotate;
 
 public class Hunter extends Entity {
     public Group implementView(){
