@@ -1,19 +1,27 @@
-package com.group1.groupproject;
 
+
+import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 
 public class Ripper extends Entity implements Enemy{
-
+	private double Vx;
+	private double Vy;
     public Ripper(double x, double y, boolean isVisible) {
         super(x, y, isVisible);
     }
-
+    // Restricted movements for NPC
+    Bounds bounds = view.getBoundsInParent();
     @Override
     public void move(double minX, double maxX, double minY, double maxY) {
-        // TODO
+    	if (bounds.getMinX() <= minX || bounds.getMaxX() >= maxX) {
+    		Vx = -Vx;
+          }
+          if (bounds.getMinY() <= minY || bounds.getMaxY() >= maxY) {
+    		Vy = -Vy;
+          }
     }
 
     @Override
@@ -48,6 +56,6 @@ public class Ripper extends Entity implements Enemy{
 
     @Override
     public void applyScannerEffect(boolean isInsideTriangle) {
-        // TODO
+       
     }
 }

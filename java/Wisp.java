@@ -1,8 +1,9 @@
-package com.group1.groupproject;
+
 
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
+import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -10,18 +11,25 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class Wisp extends Entity implements Enemy{
+	private double Vx;
+	private double Vy;
     public Wisp(double x, double y, boolean isVisible) {
         super(x, y, isVisible);
     }
-
     @Override
     public void applyScannerEffect(boolean isInsideTriangle) {
         // TODO
-    }
-
+    } 
+    // Restricted movements for NPC
+    Bounds bounds = view.getBoundsInParent();
     @Override
     public void move(double minX, double maxX, double minY, double maxY) {
-        // TODO
+    	if (bounds.getMinX() <= minX || bounds.getMaxX() >= maxX) {
+    		Vx = -Vx;
+          }
+          if (bounds.getMinY() <= minY || bounds.getMaxY() >= maxY) {
+    		Vy = -Vy;
+          }
     }
 
     @Override
