@@ -28,6 +28,7 @@ public class GameScreen extends StackPane {
         healthBar.setAlignment(Pos.TOP_RIGHT);
         textBox.setAlignment(Pos.TOP_CENTER);
 
+
         setMargin(vacuumBar, new javafx.geometry.Insets(10,0 ,0,20));
         setMargin(healthBar, new javafx.geometry.Insets(10, 20, 0, 0));
         setMargin(textBox, new javafx.geometry.Insets(25, 0, 0, 0));

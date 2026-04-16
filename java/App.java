@@ -5,7 +5,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application {
+    @Override
+    public void init() throws Exception {
+        super.init();
 
+        Config.loadConfig();
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -13,10 +18,10 @@ public class App extends Application {
         // MainMenu screen = new MainMenu();
 
         GameScreen screen = new GameScreen();
-        screen.updateVacuum(1);
-        screen.updateHealth(.5);
-        screen.updateScore(10);
-        screen.updateTime("01:19");
+        screen.updateVacuum(Config.get("maximum_vacuum"));
+        screen.updateHealth(Config.get("maximum_health"));
+        screen.updateScore(0);
+        screen.updateTime("00:00");
 
         Scene homeScene = new Scene(screen, 800, 600);
         stage.setScene(homeScene);
