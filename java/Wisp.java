@@ -11,8 +11,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class Wisp extends Entity implements Enemy{
-	private double Vx;
-	private double Vy;
+	private double Vx = ((Math.random()*2) - 1);
+	private double Vy = ((Math.random()*2) - 1);
     public Wisp(double x, double y, boolean isVisible) {
         super(x, y, isVisible);
     }

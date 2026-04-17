@@ -6,10 +6,11 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 public class Ghost extends Entity implements Enemy{
-	private double Vx;
-	private double Vy;
+	private double Vx = ((Math.random()*2) - 1);
+	private double Vy = ((Math.random()*2) - 1);
     public Ghost(double x, double y, boolean isVisible) {
         super(x, y, isVisible);
+        
     }
 
     @Override

@@ -1,4 +1,3 @@
-package com.group1.groupproject;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

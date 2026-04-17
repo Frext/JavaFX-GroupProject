@@ -1,4 +1,3 @@
-package com.group1.groupproject;
 
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;

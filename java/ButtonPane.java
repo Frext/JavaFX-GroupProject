@@ -1,5 +1,3 @@
-package com.group1.groupproject;
-
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

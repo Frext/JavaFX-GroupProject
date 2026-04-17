@@ -1,5 +1,6 @@
-package com.group1.groupproject;
+
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class MainMenu extends Pane{
 
@@ -7,9 +8,9 @@ public class MainMenu extends Pane{
 		Pane pane = new Pane();
 		pane.setPrefSize(800, 600);
 		
-		ButtonPane startButton = new ButtonPane("START GAME");
-		ButtonPane selectLevelButton = new ButtonPane("SELECT LEVEL");
-		ButtonPane exitButton = new ButtonPane("EXIT");
+		ButtonPane startButton = new ButtonPane(100, 400, "START GAME", Color.PURPLE);
+		ButtonPane selectLevelButton = new ButtonPane(100, 460, "SELECT LEVEL", Color.PURPLE);
+		ButtonPane exitButton = new ButtonPane(100, 520, "EXIT", Color.PURPLE);
 		
 		pane.getChildren().add(exitButton);
 		pane.getChildren().add(selectLevelButton);
