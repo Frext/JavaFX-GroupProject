@@ -80,7 +80,7 @@ public class Hunter extends Entity {
     }
     
     @Override
-    public void move(double minX, double maxX, double minY, double maxY) {
+    public void move(double minX, double minY, double maxX, double maxY) {
         
     	double tempX = this.x;
     	double tempY = this.y;
