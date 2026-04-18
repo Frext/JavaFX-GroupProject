@@ -1,4 +1,3 @@
-package myjavaFXprograms;
 
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
@@ -7,19 +6,10 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 public class Ghost extends Entity implements Enemy{
-<<<<<<< HEAD
 	private double Vx = Randomizer.initialVelocity();
 	private double Vy = Randomizer.initialVelocity();
-=======
-	
-	private double Vx;
-	private double Vy;
-	
->>>>>>> fe5653b7d4503b45128fc920a0ccd8fa8468d798
     public Ghost(double x, double y, boolean isVisible) {
         super(x, y, isVisible);
-        this.Vx = Randomizer.setV();
-        this.Vy = Randomizer.setV();
         
     }
 
@@ -27,10 +17,10 @@ public class Ghost extends Entity implements Enemy{
     public void applyScannerEffect(boolean isInsideTriangle) {
         // TODO
     }
-    
+    // Restricted movements for NPC
+    	Bounds bounds = view.getBoundsInParent();
     @Override
     public void move(double minX, double minY, double maxX, double maxY) {
-<<<<<<< HEAD
     	view.setLayoutX(view.getLayoutX() + Vx);
         view.setLayoutY(view.getLayoutY() + Vy);
         Bounds bounds = view.getBoundsInParent();
@@ -40,39 +30,7 @@ public class Ghost extends Entity implements Enemy{
           if (bounds.getMinY() <= minY || bounds.getMaxY() >= maxY) {
     		Vy = -Vy;
           }
-=======
-    	
-    	double tempX = this.x;
-    	double tempY = this.y;
-    	
-    	tempX += Vx;
-    	tempY += Vy;
-    	
-    	if(tempX < minX) {
-    		tempX = minX;
-    		Vx *= -1;
-    	}
-    	if(tempY < minY) {
-    		tempY = minY;
-    		Vy *= -1;
-    	}
-    	if(tempX > maxX) {
-    		tempX = maxX;
-    		Vx *= -1;
-    	}
-    	if(tempY > maxY) {
-    		tempY = maxY;
-    		Vy *= -1;
-    	}
-    	
-    	this.x = tempX;
-    	this.y = tempY;
-    	
-    	this.view.setLayoutX(this.x);
-    	this.view.setLayoutY(this.y);
->>>>>>> fe5653b7d4503b45128fc920a0ccd8fa8468d798
     }
-    
     @Override
     public Group implementView() {
         Circle face = new Circle(0,0, 15);

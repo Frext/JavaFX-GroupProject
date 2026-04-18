@@ -1,4 +1,5 @@
 
+import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
@@ -110,4 +111,7 @@ public class Hunter extends Entity {
     	this.view.setLayoutX(this.x);
     	this.view.setLayoutY(this.y);
     }
+    public Bounds vacuumArea() {
+		return this.triangle.localToScene(this.triangle.getBoundsInLocal());
+	}
 }
