@@ -1,11 +1,10 @@
-package myjavaFXprograms;
-
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 
 public class PlayableArea extends Pane{
+	
 	private double minX , minY , maxX , maxY;
-	private double width , height;
+	
 	// We'll create panes for playAreas for each level
 	public PlayableArea(double x , double y , double width, double height) {
 		minX = x;
