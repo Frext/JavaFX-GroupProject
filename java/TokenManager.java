@@ -1,5 +1,3 @@
-package myjavaFXprograms;
-
 import java.util.Random;
 
 import javafx.animation.KeyFrame;
