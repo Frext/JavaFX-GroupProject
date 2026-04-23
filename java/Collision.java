@@ -1,7 +1,6 @@
 package com.group1.groupproject;
 
 import javafx.geometry.Bounds;
-import javafx.scene.control.Label;
 
 public class Collision {
 	// TODO Update this method to be able to process many enemies rather than just one.
@@ -51,6 +50,7 @@ public class Collision {
 				wisp.applyScannerEffect(false);
 			}
 		}
+
 		return score;
 	}
 }

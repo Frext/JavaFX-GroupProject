@@ -15,12 +15,15 @@ public class Hunter extends Entity {
 	private boolean isAPressed;
 	private boolean isSPressed;
 	private boolean isDPressed;
+
+	private boolean isSpacePressed;
 	private double speed = 1.5;
 	private Polygon triangle;
 	private Rotate scannerRotate;
 	private Circle circle;
 	private int time;
 	private ColorAdjust adjust = new ColorAdjust();
+
 	//to create the hunter view
     public Group implementView(){
         Group group = new Group();
@@ -31,7 +34,8 @@ public class Hunter extends Entity {
 
         // Triangle points right which is 0 degree
         triangle.getPoints().addAll(0.0 ,0.0 , 100.0, -30.0, 100.0, 30.0);
-        triangle.setFill(null);
+        triangle.setVisible(false);
+		triangle.setFill(Color.RED);
         triangle.setOpacity(.5);
         // Instead of rotating the whole group , to just rotated the triangle.
         scannerRotate = new Rotate(0 , 0 , 0);
@@ -44,6 +48,7 @@ public class Hunter extends Entity {
 
     public Hunter(double x, double y , Scene scene) {
         super(x, y, true);
+
         setupMovementControl(scene);     
     }
     
@@ -55,7 +60,7 @@ public class Hunter extends Entity {
     			case KeyCode.A: isAPressed = true;isDPressed = false; break;
     			case KeyCode.S: isSPressed = true;isWPressed = false; break;
     			case KeyCode.D: isDPressed = true;isAPressed = false; break;
-    			case KeyCode.SPACE: triangle.setFill(Color.RED);
+    			case KeyCode.SPACE: isSpacePressed = true; break;
     		}
     	});
     	
@@ -65,7 +70,7 @@ public class Hunter extends Entity {
     			case KeyCode.A: isAPressed = false; break;
     			case KeyCode.S: isSPressed = false; break;
     			case KeyCode.D: isDPressed = false; break;
-    			case KeyCode.SPACE: triangle.setFill(null);
+    			case KeyCode.SPACE: isSpacePressed = false; break;
     		}
     	});
     	
@@ -132,5 +137,17 @@ public class Hunter extends Entity {
 		} else {
 			circle.setEffect(null);
 		}
+	}
+
+	public boolean wantsToVacuum(){
+		return isSpacePressed;
+	}
+
+	public void enableVacuumEffect(){
+		triangle.setVisible(true);
+	}
+
+	public void disableVacuumEffect(){
+		triangle.setVisible(false);
 	}
 }

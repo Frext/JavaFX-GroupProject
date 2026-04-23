@@ -1,9 +1,11 @@
 package com.group1.groupproject;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class App extends Application {
     @Override
@@ -24,6 +26,7 @@ public class App extends Application {
                 Config.get("level_1_playable_area_width"),
                 Config.get("level_1_playable_area_height"));
 
+        TokenManager tokenManager = new TokenManager(area);
 
         GameScreen screen = new GameScreen(area);
         screen.updateVacuum(Config.get("maximum_vacuum"));
@@ -42,7 +45,9 @@ public class App extends Application {
         area.getChildren().addAll(hunter.getView(), ripper.getView(), wisp.getView(), ghost.getView());
 
         AnimationTimer time = new AnimationTimer() {
+            final double VACUUM_THRESHOLD = 0.01;
             long startTime = -1;
+            boolean isVacuumInTimeout = false;
 
             @Override
             public void handle(long now) {
@@ -55,16 +60,42 @@ public class App extends Application {
                 wisp.move(area.getMinX(), area.getMinY(), area.getMaxX(), area.getMaxY());
                 ghost.move(area.getMinX(), area.getMinY(), area.getMaxX(), area.getMaxY());
 
-                screen.updateScore(Collision.handleVacuum(hunter, ghost, ripper, wisp, area, screen.getScore()));
-                screen.updateHealth(Health.damage(screen.getHealth(), hunter, ghost, ripper, wisp, area));
+                // If vacuum is below an amount the vacuuming should be disabled for a certain amount of time to prevent jittery vacuum.
+                if (screen.getVacuum() <= VACUUM_THRESHOLD && !isVacuumInTimeout){
+                    isVacuumInTimeout = true;
+
+                    PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1));
+                    pauseTransition.setOnFinished(event -> {
+                        isVacuumInTimeout = false;
+                    });
+
+                    pauseTransition.play();
+                }
+                // If the vacuum is not in timeout and the hunter wants to vacuum, turn on the effects.
+                if(hunter.wantsToVacuum() && screen.getVacuum() > VACUUM_THRESHOLD && !isVacuumInTimeout){
+                    hunter.enableVacuumEffect();
+                    screen.updateScore(Collision.handleVacuum(hunter, ghost, ripper, wisp, area, screen.getScore()));
+                    screen.updateVacuum(screen.getVacuum() - 0.008);
+                } else{
+                    hunter.disableVacuumEffect();
+                    screen.updateVacuum(screen.getVacuum() + 0.001);
+
+                    // If vacuum triangle is turned off, make sure the enemies don't have their effects.
+                    ghost.applyScannerEffect(false);
+                    ripper.applyScannerEffect(false);
+                    wisp.applyScannerEffect(false);
+                }
 
                 // Convert nanoseconds to seconds
                 screen.updateTime((int)((now-startTime) / 1000000000));
+
+                screen.updateHealth(Health.damage(screen.getHealth(), hunter, ghost, ripper, wisp, area));
             }
         };
 
         time.start();
-        
+        tokenManager.startSpawning();
+
         stage.show();
     }
 

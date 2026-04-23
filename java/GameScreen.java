@@ -41,13 +41,13 @@ public class GameScreen extends StackPane {
     }
 
     public void updateVacuum(double percentage){
-        vacuumBar.setFill(percentage);
-        vacuumPercentage = percentage;
+        vacuumBar.setFill(Math.clamp(percentage, 0.0, 1.0));
+        vacuumPercentage = Math.clamp(percentage, 0.0, 1.0);
     }
 
     public void updateHealth(double percentage){
-        healthBar.setFill(percentage);
-        healthPercentage = percentage;
+        healthBar.setFill(Math.clamp(percentage, 0.0, 1.0));
+        healthPercentage = Math.clamp(percentage, 0.0, 1.0);
     }
 
     public void updateScore(int score){
@@ -66,5 +66,9 @@ public class GameScreen extends StackPane {
 
     public double getHealth(){
         return healthPercentage;
+    }
+
+    public double getVacuum() {
+        return vacuumPercentage;
     }
 }

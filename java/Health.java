@@ -11,7 +11,7 @@ public class Health {
 			Bounds ghostBounds = ghost.getView().localToScene(ghost.getView().getBoundsInLocal());
 			if (hunter.hunterBounds().intersects(ghostBounds)) {
 				isDamaged = true;
-				health -= 0.01;
+				health -= 0.001;
 				if (health < 0)
 					health = 0;
 			}
@@ -20,7 +20,7 @@ public class Health {
 			Bounds ripperBounds = ripper.getView().localToScene(ripper.getView().getBoundsInLocal());
 			if (hunter.hunterBounds().intersects(ripperBounds)) {
 				isDamaged = true;
-				health -= 0.02;
+				health -= 0.002;
 				if (health < 0)
 					health = 0;
 			}
@@ -29,7 +29,7 @@ public class Health {
 			Bounds wispBounds = wisp.getView().localToScene(wisp.getView().getBoundsInLocal());
 			if (hunter.hunterBounds().intersects(wispBounds)) {
 				isDamaged = true;
-				health -= 0.03;
+				health -= 0.003;
 				if (health < 0)
 					health = 0;
 			}
