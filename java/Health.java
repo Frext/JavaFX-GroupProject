@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 import javafx.geometry.Bounds;
 
-public class Health {
+public class Health { // Abdullah Derviş Kombıçak 150124009 set hunter's health
 	public static double damage(double health, Hunter hunter, ArrayList<Entity> enemies) {
 		boolean isDamaged = false;
 

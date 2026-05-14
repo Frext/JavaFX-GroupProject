@@ -10,7 +10,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import java.nio.file.attribute.FileAttribute;
-
 public class Wisp extends Entity implements Enemy{
 	private double Vx = Randomizer.initialVelocity();
 	private double Vy = Randomizer.initialVelocity();
@@ -19,6 +18,7 @@ public class Wisp extends Entity implements Enemy{
     public Wisp(double x, double y, boolean isVisible) {
         super(x, y, isVisible);
     }
+    // Abdullah Derviş Kombıçak 150124009 collision animation on Wisp
     @Override
     public void applyScannerEffect(boolean isInsideTriangle) {
 		if (isInsideTriangle) {
@@ -37,7 +37,7 @@ public class Wisp extends Entity implements Enemy{
 		}
 
 	}
-    // Restricted movements for NPC
+    // Abdullah Derviş Kombıçak 150124009 Restricted movements for NPC
     
     @Override
     public void move(double minX, double minY, double maxX, double maxY) {

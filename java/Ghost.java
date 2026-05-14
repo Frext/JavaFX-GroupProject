@@ -6,7 +6,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 public class Ghost extends Entity implements Enemy{
-	private double Vx = Randomizer.initialVelocity();
+	private double Vx = Randomizer.initialVelocity(); //Abdullah Derviş Kombıçak 150124009
 	private double Vy = Randomizer.initialVelocity();
 	private int time;
 	private ColorAdjust adjust = new ColorAdjust();
@@ -14,7 +14,7 @@ public class Ghost extends Entity implements Enemy{
         super(x, y, isVisible);
         
     }
-
+    // Abdullah Derviş Kombıçak 150124009 enemy collision animation
     @Override
     public void applyScannerEffect(boolean isInsideTriangle) {
 		if (isInsideTriangle) {
@@ -34,7 +34,7 @@ public class Ghost extends Entity implements Enemy{
 		}
 
 	}
-    // Restricted movements for NPC
+    // Abdullah Derviş Kombıçak 150124009 Restricted movements for NPC 
     	Bounds bounds = view.getBoundsInParent();
     @Override
     public void move(double minX, double minY, double maxX, double maxY) {

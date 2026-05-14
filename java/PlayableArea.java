@@ -18,7 +18,7 @@ public class PlayableArea extends Pane{
 		playableArea.setLayoutX(minX);
 		playableArea.setLayoutY(minY);
 		playableArea.setFocusTraversable(true); // This is keyboard listener
-		
+		// Abdullah Derviş Kombıçak 150124009 M button action.
 		playableArea.setOnKeyPressed(e -> {
 		if (e.getCode() == KeyCode.M) {
 			playableArea.setStyle("-fx-border-color: red; -fx-border-width: 1px;");

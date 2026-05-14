@@ -4,7 +4,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-public class LosePane extends VBox {
+public class LosePane extends VBox { // Abdullah Derviş Kombıçak 150124009 I designed lose screen as a pane
 
     public LosePane(App app, int score, int levelNum) {
         this.setPrefSize(1500, 900);
@@ -24,7 +24,9 @@ public class LosePane extends VBox {
         retryBtn.setOnMouseClicked(e -> app.startLevel(levelNum));
         ButtonPane menuBtn = new ButtonPane(0, 0, "MAIN MENU", Color.GRAY);
         menuBtn.setMaxSize(300, 100);
-        menuBtn.getText().setPrefWidth(300);        menuBtn.setOnMouseClicked(e -> app.showMainMenu());
+        menuBtn.getText().setPrefWidth(300);     
+        
+        menuBtn.setOnMouseClicked(e -> app.showMainMenu());
 
         buttonBox.getChildren().addAll(retryBtn, menuBtn);
         

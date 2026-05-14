@@ -4,7 +4,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class WinPane extends VBox{
-	// We add 2 labels and 1 button under each other
+	// Abdullah Derviş Kombıçak 150124009 I designed win screen as a pane. We add 2 labels and 1 button under each other
 	WinPane(App app, int levelNum) {
 		this.setAlignment(Pos.CENTER);
 		this.setSpacing(20);

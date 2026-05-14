@@ -14,8 +14,8 @@ public class Ripper extends Entity implements Enemy {
 	public Ripper(double x, double y, boolean isVisible) {
 		super(x, y, isVisible);
 	}
-	// Restricted movements for NPC
-
+	// Abdullah Derviş Kombıçak 150124009 Restricted movements for NPC
+	
 	public void move(double minX, double minY, double maxX, double maxY) {
 		view.setLayoutX(view.getLayoutX() + Vx);
 		view.setLayoutY(view.getLayoutY() + Vy);
@@ -58,7 +58,7 @@ public class Ripper extends Entity implements Enemy {
 
 		return group;
 	}
-
+	// Abdullah Derviş Kombıçak 150124009 collision animation on ripper.
 	@Override
 	public void applyScannerEffect(boolean isInsideTriangle) {
 		if (isInsideTriangle) {

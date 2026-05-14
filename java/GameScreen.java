@@ -182,6 +182,7 @@ public class GameScreen extends StackPane {
             }
         };
     }
+    // Abdullah Derviş Kombıçak 150124009 to set visibility of enemies outside of class
     public static void setIsEyeOn(boolean isEyeOn) {
 	    GameScreen.isEyeOn = isEyeOn;
     }
@@ -195,7 +196,7 @@ public class GameScreen extends StackPane {
         currentHealth = Math.clamp(percentage, 0.0, 1.0);
         healthBar.setFill(currentHealth);
     }
-    
+    // Abdullah Derviş Kombıçak 150124009
     public void updateScore(int score){
         scoreText.setText("SCORE: " + score);
     }

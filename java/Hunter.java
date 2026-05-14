@@ -53,7 +53,7 @@ public class Hunter extends Entity {
     //to determine which key is pressed
     private void setupMovementControl(Scene scene) {
     	scene.setOnKeyPressed(e -> {
-    		switch(e.getCode()) {
+    		switch(e.getCode()) { // Abdullah Derviş Kombıçak 150124009 did when you released opposite key but still press on other key (e.g. release from s but still press w) continue to movement.
     			case KeyCode.W: isWPressed = true;isSPressed = false; break;
     			case KeyCode.A: isAPressed = true;isDPressed = false; break;
     			case KeyCode.S: isSPressed = true;isWPressed = false; break;
@@ -64,7 +64,7 @@ public class Hunter extends Entity {
     	
     	scene.setOnKeyReleased(e -> {
     		switch(e.getCode()) {
-    			case KeyCode.W: isWPressed = false; break;
+    			case KeyCode.W: isWPressed = false; break; 
     			case KeyCode.A: isAPressed = false; break;
     			case KeyCode.S: isSPressed = false; break;
     			case KeyCode.D: isDPressed = false; break;
@@ -116,13 +116,13 @@ public class Hunter extends Entity {
     	
     	this.view.setLayoutX(this.x);
     	this.view.setLayoutY(this.y);
-    }
+    } // Abdullah Derviş Kombıçak 150124009 to find triangle area
     public Bounds vacuumArea() {
 		return this.triangle.localToScene(this.triangle.getBoundsInLocal());
-	}
+	} // Abdullah Derviş Kombıçak 150124009 to enemy damage
     public Bounds hunterBounds() {
 		return this.circle.localToScene(this.circle.getBoundsInLocal());
-	}
+	} // Abdullah Derviş Kombıçak 150124009 damage effect
     public void applyDamageEffect(boolean isTakingDamage) {
     	if (isTakingDamage) {
 			time++;

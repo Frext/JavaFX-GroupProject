@@ -6,13 +6,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
-public class ButtonPane extends StackPane {
+public class ButtonPane extends StackPane { 
 	
 	private Label text = new Label();
 
 	public ButtonPane(int x , int y , String s , Color color) {
 		
-		//to create text
+		//to create text Abdullah Derviş Kombıçak 150124009
 		text.setText(s);
 		text.setPrefSize(150, 50);
 		text.setStyle("-fx-font-family: 'Chiller'; -fx-text-fill: white; -fx-font-size: 40px;");
@@ -31,7 +31,7 @@ public class ButtonPane extends StackPane {
 		if(color.equals(Color.GRAY)) 
 			this.setStyle("-fx-background-color: gray;");
 		
-		//hover part
+		//hover part Abdullah Derviş Kombıçak 150124009
 		this.setOnMouseEntered(e -> {
 			if(color.equals(Color.PURPLE)) {
 				text.setStyle("-fx-font-family: 'Chiller'; -fx-text-fill: red; -fx-font-size: 40px;");
@@ -62,7 +62,7 @@ public class ButtonPane extends StackPane {
 		
 		ImageView imageView = new ImageView(image);
 		
-		//to create text
+		//to create text 
 		text.setText(s);
 		text.setPrefSize(150, 50);
 		text.setStyle("-fx-font-family: 'serif'; -fx-text-fill: white; -fx-font-size: 48px;");
@@ -79,7 +79,7 @@ public class ButtonPane extends StackPane {
 		this.getChildren().add(text);
 		this.setStyle("-fx-background-color: purple;");
 		
-		//hover part
+		//hover part Abdullah Derviş Kombıçak 150124009
 		this.setOnMouseEntered(e -> {
 			this.setStyle("-fx-background-color: orchid;");
 		});
@@ -88,7 +88,7 @@ public class ButtonPane extends StackPane {
 			this.setStyle("-fx-background-color: purple;");
 		});
 		
-		//click part
+		//click part Abdullah Derviş Kombıçak 150124009
 		this.setOnMouseClicked(e -> {
 			this.setStyle("-fx-background-color: white;");
 		});

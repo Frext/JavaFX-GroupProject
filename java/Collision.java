@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 import javafx.geometry.Bounds;
 
-public class Collision {
+public class Collision { // Abdullah Derviş Kombıçak 150124009 collision logic of entities
 	
 	public static int handleVacuum(ArrayList<Entity> enemies, Hunter hunter, PlayableArea area, int score) {
 		

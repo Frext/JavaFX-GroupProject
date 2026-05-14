@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Randomizer {
+public class Randomizer { // Abdullah Derviş Kombıçak 150124009 to spawn enemies random locations and random velocities.
 	private static Random random = new Random();
 
 	public static double getX(PlayableArea area) {

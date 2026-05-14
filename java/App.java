@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -16,6 +17,8 @@ public class App extends Application {
 	
 	public void start(Stage stage) {
 		this.stage = stage;
+		Image icon = new Image("file:icon.png");
+		stage.getIcons().add(icon);
 		showMainMenu();
 		stage.show();
 	}
@@ -64,4 +67,5 @@ public class App extends Application {
     	Config.loadConfig();
         launch(args);
     }
+   
 }
