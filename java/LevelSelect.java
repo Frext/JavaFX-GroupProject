@@ -4,8 +4,9 @@ import javafx.scene.image.Image;
 public class LevelSelect extends Pane{
 	private App app;
 	
-	public LevelSelect(App app) {
-		
+	public LevelSelect(App app) {//to create teh level select menu Emir Aydın 150124001
+
+		//we took the main class (App) as a parameter because main class keeps the stage and we need it to change the scene
 		this.app = app;
 		
 		this.setStyle("-fx-background-image: url('file:level_select_background.png'); " + "-fx-background-size: cover;");
