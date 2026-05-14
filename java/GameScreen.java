@@ -26,6 +26,7 @@ public class GameScreen extends StackPane {
     private AnimationTimer gameLoop;
     
     private double targetHealth = 1.0;
+    private double currentHealth = 1.0;
     private double currentVacuum = 1.0;
     private final double VACUUM_THRESHOLD = 0.01;
     private boolean isVacuumInTimeout = false;
@@ -37,7 +38,7 @@ public class GameScreen extends StackPane {
         this.appManager = appManager;
         this.levelNumber = levelNumber;
 
-        this.levelTimeLimit = (int) Config.get("level_" + levelNumber + "_time");
+        this.levelTimeLimit = Config.get("level_" + levelNumber + "_time");
         
         area = new PlayableArea(Config.get("level_" + levelNumber + "_playable_area_x") , Config.get("level_" + levelNumber + "_playable_area_y") , Config.get("level_" + levelNumber + "_playable_area_width") , Config.get("level_" + levelNumber + "_playable_area_height"));
 
@@ -141,9 +142,25 @@ public class GameScreen extends StackPane {
                 updateVacuum(currentVacuum);
                 
                 targetHealth = Health.damage(targetHealth, hunter, enemyManager.getEnemies());
-                healthBar.setFill(targetHealth);
-                
+
+                // If they are really close, set it to targetHealth to avoid jittering
+                if (Math.abs(targetHealth - currentHealth) < 0.01)
+                    updateHealth(targetHealth);
+                    // We can add or subtract little by little to the health, that will create a smooth transition because AnimationTimer runs 60 fps
+                else if (targetHealth > currentHealth) {
+                    updateHealth(currentHealth + 0.01);
+                } else{
+                    updateHealth(currentHealth - 0.01);
+                }
+
                 tokenManager.checkTokenCollision();
+
+                // If we don't do this, once you start vacuuming an entity, the other entities disappear.
+                if (isEyeOn){
+                    for(Entity enemy : enemyManager.getEnemies()){
+                        enemy.getView().setVisible(true);
+                    }
+                }
                 
                 if(remainingTime >= 0) {
                     timeText.setText(String.format("%02d:%02d", remainingTime / 60, remainingTime % 60));
@@ -167,6 +184,11 @@ public static void setIsEyeOn(boolean isEyeOn) {
     public void updateVacuum(double percentage){
         currentVacuum = Math.clamp(percentage, 0.0, 1.0);
         vacuumBar.setFill(currentVacuum);
+    }
+
+    public void updateHealth(double percentage){
+        currentHealth = Math.clamp(percentage, 0.0, 1.0);
+        healthBar.setFill(currentHealth);
     }
     
     public void updateScore(int score){
