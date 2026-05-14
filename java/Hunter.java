@@ -50,7 +50,7 @@ public class Hunter extends Entity {
         setupMovementControl(scene);     
     }
     
-    //to determine which key is pressed
+    //to determine which key is pressed Emir Aydın 150124001
     private void setupMovementControl(Scene scene) {
     	scene.setOnKeyPressed(e -> {
     		switch(e.getCode()) { // Abdullah Derviş Kombıçak 150124009 did when you released opposite key but still press on other key (e.g. release from s but still press w) continue to movement.
@@ -78,14 +78,14 @@ public class Hunter extends Entity {
     		
     		double Dx = mouseX - this.x;
     		double Dy = mouseY - this.y;
-    		//we used atan2 instead of atan , because to avoid Arithmetic problem (dividing by 0) and to calculate angle properly (negative / negative = positive cause the wrong angle)  
+    		//we used atan2 instead of atan , because to avoid Arithmetic problem (dividing by 0) and to calculate angle properly (negative / negative = positive cause the wrong angle)
     		double angle = Math.toDegrees(Math.atan2(Dy, Dx));
     		scannerRotate.setAngle(angle);
     	});
     }
     
     @Override
-    public void move(double minX, double minY, double maxX, double maxY) {
+    public void move(double minX, double minY, double maxX, double maxY) {//this method is abstruct in the super class entity , so we override it Emir Aydın 150124001
         
     	double tempX = this.x;
     	double tempY = this.y;
@@ -116,13 +116,19 @@ public class Hunter extends Entity {
     	
     	this.view.setLayoutX(this.x);
     	this.view.setLayoutY(this.y);
-    } // Abdullah Derviş Kombıçak 150124009 to find triangle area
+    } 
+	
+	// Abdullah Derviş Kombıçak 150124009 to find triangle area
     public Bounds vacuumArea() {
 		return this.triangle.localToScene(this.triangle.getBoundsInLocal());
-	} // Abdullah Derviş Kombıçak 150124009 to enemy damage
+	} 
+	
+	// Abdullah Derviş Kombıçak 150124009 to enemy damage
     public Bounds hunterBounds() {
 		return this.circle.localToScene(this.circle.getBoundsInLocal());
-	} // Abdullah Derviş Kombıçak 150124009 damage effect
+	} 
+	
+	// Abdullah Derviş Kombıçak 150124009 damage effect
     public void applyDamageEffect(boolean isTakingDamage) {
     	if (isTakingDamage) {
 			time++;
