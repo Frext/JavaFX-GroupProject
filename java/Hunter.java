@@ -22,7 +22,9 @@ public class Hunter extends Entity {
 	private int time;
 	private ColorAdjust adjust = new ColorAdjust();
 
-	//to create the hunter view
+	/** Furkan USUL 150125042
+	 * This method implements the visual of Hunter entity.
+	 */
     public Group implementView(){
         Group group = new Group();
         circle = new Circle(15);
@@ -35,7 +37,7 @@ public class Hunter extends Entity {
         triangle.setVisible(false);
 		triangle.setFill(Color.RED);
         triangle.setOpacity(.5);
-        // Instead of rotating the whole group , to just rotated the triangle.
+        // Instead of rotating the whole group including the hunter, just rotate the triangle.
         scannerRotate = new Rotate(0 , 0 , 0);
         triangle.getTransforms().add(scannerRotate);
         
@@ -44,6 +46,9 @@ public class Hunter extends Entity {
         return group;
     }
 
+	/** Furkan USUL 150125042
+	 * This method invokes the superclass(Entity) constructor and sets up movement controls.
+	 */
     public Hunter(double x, double y , Scene scene) {
         super(x, y, true);
 
@@ -143,18 +148,30 @@ public class Hunter extends Entity {
 		}
 	}
 
+	/** Furkan USUL 150125042
+	 * This method returns if the space key is pressed.
+	 */
 	public boolean wantsToVacuum(){
 		return isSpacePressed;
 	}
 
+	/** Furkan USUL 150125042
+	 * This method enables the red scanner triangle.
+	 */
 	public void enableVacuumEffect(){
 		triangle.setVisible(true);
 	}
 
+	/** Furkan USUL 150125042
+	 * This method disables the red scanner triangle.
+	 */
 	public void disableVacuumEffect(){
 		triangle.setVisible(false);
 	}
 
+	/** Furkan USUL 150125042
+	 * This method increases the red scanner triangle vacuum range by increaseAmount.
+	 */
 	public void increaseVacuumRange(double increaseAmount){
 		// The coordinates below are the original coordinates of the triangle
 		// (0.0 ,0.0 , 100.0, -30.0, 100.0, 30.0)

@@ -5,15 +5,22 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 
+/** Furkan USUL 150125042
+ * This class implements the enemy entity Ripper.
+ */
 public class Ripper extends Entity implements Enemy {
 	private double Vx = Randomizer.initialVelocity();
 	private double Vy = Randomizer.initialVelocity();
 	private int time;
 	private ColorAdjust adjust = new ColorAdjust();
 
+	/** Furkan USUL 150125042
+	 * Initialize the enemy entity Ripper via superclass constructor.
+	 */
 	public Ripper(double x, double y, boolean isVisible) {
 		super(x, y, isVisible);
 	}
+
 	// Abdullah Derviş Kombıçak 150124009 Restricted movements for NPC
 	
 	public void move(double minX, double minY, double maxX, double maxY) {
@@ -28,6 +35,9 @@ public class Ripper extends Entity implements Enemy {
 		}
 	}
 
+	/** Furkan USUL 150125042
+	 * This method implements the visual of the Ripper enemy entity.
+	 */
 	@Override
 	public Group implementView() {
 		Circle face = new Circle(0, 0, 15);
@@ -52,12 +62,12 @@ public class Ripper extends Entity implements Enemy {
 		purpleSpikes.setFill(Color.PURPLE);
 
 		Group group = new Group();
-		// purpleSpikes is put first because addAll puts the first argument to the
-		// bottom and others on top of that
+		// purpleSpikes is put first because addAll puts the first argument to the bottom and others on top of that
 		group.getChildren().addAll(purpleSpikes, face, leftEye, rightEye);
 
 		return group;
 	}
+
 	// Abdullah Derviş Kombıçak 150124009 collision animation on ripper.
 	@Override
 	public void applyScannerEffect(boolean isInsideTriangle) {

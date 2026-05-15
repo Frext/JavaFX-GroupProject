@@ -1,4 +1,3 @@
-import javafx.animation.Transition;
 import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -10,10 +9,9 @@ public class BarPane extends VBox {
     private final double maxBarHeight = 200;
     private Rectangle fillRectangle;
 
-    private Transition heightTransition;
-
-    private double currentPercentage = 1.0;	
-    
+    /** Furkan USUL 150125042
+     * Create a bar pane with text and fillColor that can be used for both health and vacuum.
+     */
     public BarPane(String text, Color fillColor){
         this.setAlignment(Pos.CENTER);
 
@@ -39,12 +37,10 @@ public class BarPane extends VBox {
         this.getChildren().addAll(label, barContainer);
     }
 
+    /** Furkan USUL 150125042
+     *  Set inner rectangle height according to the new percentage value and clamp it between 0% and 100%.
+     */
     public void setFill(double percentage){
-    	this.currentPercentage = Math.clamp(percentage, 0.0, 1.0);
-    	fillRectangle.setHeight(maxBarHeight * this.currentPercentage);
-    }
-    
-    public double getPercentage() {
-    	return this.currentPercentage;
+    	fillRectangle.setHeight(maxBarHeight * Math.clamp(percentage, 0.0, 1.0));
     }
 }

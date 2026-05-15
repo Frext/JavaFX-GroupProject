@@ -11,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 
 public class GameScreen extends StackPane {
-    
     private Label scoreText = new Label("SCORE: 0");
     private Label timeText = new Label("00:00");
     private BarPane vacuumBar = new BarPane("VACUUM", Color.rgb(157,0,255, 1));
@@ -191,25 +190,38 @@ public class GameScreen extends StackPane {
 	    GameScreen.isEyeOn = isEyeOn;
     }
 
+    /** Furkan USUL 150125042
+     * Update vacuum numerically with currentVacuum and visually with setFill() method
+     */
     public void updateVacuum(double percentage){
         currentVacuum = Math.clamp(percentage, 0.0, 1.0);
         vacuumBar.setFill(currentVacuum);
     }
 
+    /** Furkan USUL 150125042
+     * Update health numerically with currentHealth and visually with setFill() method
+     */
     public void updateHealth(double percentage){
         currentHealth = Math.clamp(percentage, 0.0, 1.0);
         healthBar.setFill(currentHealth);
     }
+
     // Abdullah Derviş Kombıçak 150124009
     public void updateScore(int score){
         scoreText.setText("SCORE: " + score);
     }
-    
+
+    /** Furkan USUL 150125042
+     * Start the animation timer loop and start token manager.
+     */
     public void startGame() {
         gameLoop.start();
         tokenManager.startSpawning();
     }
-    
+
+    /** Furkan USUL 150125042
+     * Stop the animation timer loop and stop token manager from spawning any more tokens.
+     */
     public void stopGame() {
         gameLoop.stop();
         tokenManager.stopSpawning();

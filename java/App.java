@@ -9,9 +9,12 @@ import javafx.stage.Stage;
 public class App extends Application {
 	private Stage stage;
 	private StackPane rootPane;
-	
+
+	/* Furkan USUL 150125042
+	 * Load the config file before the start() method
+	 */
 	@Override
-	public void init() throws Exception {
+	public void init() {
 		Config.loadConfig();
 	}
 	
@@ -46,12 +49,18 @@ public class App extends Application {
 		gameScreen.initLevel(scene);
 		gameScreen.startGame();
 	}
-	
+
+	/** Furkan USUL 150125042
+	 * Show lose screen on whole screen, levelNum is needed for restarting the same level and score is needed for displaying it
+	 */
 	public void showLoseScene(int score, int levelNum) {
 		LosePane losePane = new LosePane(this, score, levelNum);
 		stage.setScene(new Scene(losePane, 1500, 900));
 	}
 
+	/** Furkan USUL 150125042
+	 * Show win screen on top of the level, levelNum is needed for navigating to the next level
+	 */
 	public void showWinScene(int levelNum) {
 		WinPane winPane = new WinPane(this, levelNum);
 		winPane.setMaxSize(500, 300);
@@ -59,13 +68,14 @@ public class App extends Application {
 		rootPane.getChildren().add(winPane);
 	}
 
+	/** Furkan USUL 150125042
+	 * Quit the application
+	 */
 	public void exit(){
 		Platform.exit();
 	}
 	
     public static void main(String[] args) {
-    	Config.loadConfig();
         launch(args);
     }
-   
 }

@@ -9,15 +9,23 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-import java.nio.file.attribute.FileAttribute;
+
+/** Furkan USUL 150125042
+ * This class implements the enemy entity Wisp.
+ */
 public class Wisp extends Entity implements Enemy{
 	private double Vx = Randomizer.initialVelocity();
 	private double Vy = Randomizer.initialVelocity();
 	private int time;
 	private ColorAdjust adjust = new ColorAdjust();
+
+    /** Furkan USUL 150125042
+     * Initialize the enemy entity Wisp via superclass constructor.
+     */
     public Wisp(double x, double y, boolean isVisible) {
         super(x, y, isVisible);
     }
+
     // Abdullah Derviş Kombıçak 150124009 collision animation on Wisp
     @Override
     public void applyScannerEffect(boolean isInsideTriangle) {
@@ -52,6 +60,9 @@ public class Wisp extends Entity implements Enemy{
           }
     }
 
+    /** Furkan USUL 150125042
+     * This method implements the visual of the Wisp enemy entity.
+     */
     @Override
     public Group implementView() {
         Circle face = new Circle(0,0, 15);
@@ -85,7 +96,7 @@ public class Wisp extends Entity implements Enemy{
         // Only rotate the spikes
         RotateTransition rotateTransition = new RotateTransition(Duration.seconds(3), spikes);
         rotateTransition.setByAngle(360);
-        // Avoid ease-in-out effect when spinning
+        // Avoid ease-in-out effect when spinning and have a steady rotation effect
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.setCycleCount(Animation.INDEFINITE);
         rotateTransition.play();
